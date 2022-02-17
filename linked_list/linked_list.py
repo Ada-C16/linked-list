@@ -114,9 +114,11 @@ class LinkedList:
                 if current.next == None:
                     new_node = Node(value, next_node=None)
                     current.next = new_node
+                    current = current.next
+                    return 
                 else:
                     current = current.next
-
+                    
     # method to return the max value in the linked list
     # returns the data value and not the node
     def find_max(self):
@@ -203,14 +205,41 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def find_middle_value(self):
-        pass
+        if self.head == None:
+            return None
+        elif self.head.next == None:
+            return self.head.value
+        else:
+            one_step_current = self.head
+            two_step_current = self.head
+            while two_step_current != None and two_step_current.next != None:
+                one_step_current = one_step_current.next
+                two_step_current = two_step_current.next.next
+            return one_step_current.value
+        
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
     # Time Complexity: ?
     # Space Complexity: ?
     def find_nth_from_end(self, n):
-        pass
+        if self.head == None:
+            return None
+        else:
+            one_step_current = self.head
+            n_step_current = self.head
+            counter = 0
+            while n_step_current.next != None:
+                if counter < n:
+                    n_step_current = n_step_current.next
+                    counter += 1
+                else:
+                    n_step_current = n_step_current.next
+                    one_step_current = one_step_current.next
+            if counter < n:
+                return None
+            else:
+                return one_step_current.value
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
@@ -218,7 +247,18 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def has_cycle(self):
-        pass
+        if self.head == None:
+            return False
+        else:
+            node_set = set()
+            current = self.head
+            while current != None:
+                if current not in node_set:
+                    node_set.add(current)
+                    current = current.next
+                else:
+                    return True
+            return False
 
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
@@ -242,11 +282,3 @@ class LinkedList:
             current = current.next
         return 
     
-        
-ll = LinkedList()
-ll.add_first(3)
-ll.add_first(2)
-ll.add_first(1)
-ll.add_first(0)
-
-ll.reverse().print_list()
