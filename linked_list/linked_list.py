@@ -20,7 +20,6 @@ class LinkedList:
             return None
         return self.head.value
 
-
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
     # Time Complexity: O(1)
@@ -156,32 +155,74 @@ class LinkedList:
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse(self):
-        pass
+        if self.head == None:
+            return None
+
+        cur = self.head
+        prev = None
+        next = None
+        
+        while cur:
+            next = cur.next
+            cur.next = prev
+            prev = cur
+            cur = next
+
+        self.head = prev
   
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_middle_value(self):
-        pass
+        mid = self.length() // 2
+
+        cur = self.head
+
+        for _ in range(mid):
+            cur = cur.next
+
+        return cur.value
+
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_nth_from_end(self, n):
-        pass
+        length = self.length()
+        if n >= length or length == 0:
+            return None
+
+        n_from_front = length - n
+
+        cur = self.head
+        for _ in range(n_from_front):
+            cur = cur.next
+
+        if not cur:
+            return None
+        else:
+            return cur.value
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def has_cycle(self):
-        pass
+        unique_nodes = set()
+
+        cur = self.head
+        while cur:
+            if cur in unique_nodes:
+                return True
+            unique_nodes.add(cur)
+            cur = cur.next
+        return False
 
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
