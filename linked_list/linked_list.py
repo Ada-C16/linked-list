@@ -1,5 +1,8 @@
 
 # Defines a node in the singly linked list
+from operator import truediv
+
+
 class Node:
 
     def __init__(self, value, next_node = None):
@@ -16,15 +19,19 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def get_first(self):
-        return self.head
-
+        if self.head == None:
+            return self.head
+        else:
+            return self.head.value
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
     # Time Complexity: ?
     # Space Complexity: ?
     def add_first(self, value):
-        pass
+        new_node = Node(value)
+        new_node.next = self.head
+        self.head = new_node
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
@@ -126,3 +133,10 @@ class LinkedList:
             current = current.next
 
         current.next = self.head # make the last node link to first node
+
+
+
+some_node = Node("crab")
+some_ll = LinkedList()
+some_ll.add_first(some_node)
+print(some_ll.head.value)
