@@ -49,7 +49,12 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def length(self):
-        pass
+        count = 0
+        current = self.head
+        while current:
+            current = current.next
+            count += 1
+        return count
 
     # method that returns the value at a given index in the linked list
     # index count starts at 0
@@ -144,4 +149,4 @@ class LinkedList:
 some_node = Node("crab")
 some_ll = LinkedList()
 some_ll.add_first(some_node)
-print(some_ll.head.value)
+some_ll.length()
