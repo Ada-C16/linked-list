@@ -24,7 +24,7 @@ def test_add_first_adds_to_start_of_list(list):
     assert list.get_first() == 'pasta'
 
 
-@pytest.mark.skip(reason="Method not completed yet")
+# @pytest.mark.skip(reason="Method not completed yet")
 def test_search_returns_false_for_empty_list(list):
     assert list.search(3) == False
 
