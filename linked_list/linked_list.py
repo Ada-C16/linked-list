@@ -43,20 +43,28 @@ class LinkedList:
     def search(self, value):
         if self.head is None:
             return False
-        while self.head.next is not None:
-            if self.head.value != value:
-                self.head.previous = self.head.next
-                self.head.next = self.head.next.next
-            if self.head.value == value:
+        
+        current = self.head
+        while current is not None:
+            if current.value == value:
                 return True
-            return False
-        pass
+            else:
+                current.previous = current
+                current = current.next
+        return False
 
     # method that returns the length of the singly linked list
     # Time Complexity: ?
     # Space Complexity: ?
     def length(self):
-        pass
+        list_length = 0
+        current = self.head
+
+        while current is not None:
+            list_length +=1
+            current = current.next
+
+        return list_length
 
     # method that returns the value at a given index in the linked list
     # index count starts at 0
