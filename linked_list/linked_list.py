@@ -16,7 +16,10 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def get_first(self):
-        pass
+        if self.head is None:
+            return None
+        
+        return self.head.value
 
 
     # method to add a new node with the specific data value in the linked list
