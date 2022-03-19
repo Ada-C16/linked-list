@@ -41,10 +41,13 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def search(self, value):
-        while self.next is not None:
-            if self.value != value:
-                self.next = self.next.next
-            if self.value == value:
+        if self.head is None:
+            return False
+        while self.head.next is not None:
+            if self.head.value != value:
+                self.head.previous = self.head.next
+                self.head.next = self.head.next.next
+            if self.head.value == value:
                 return True
             return False
         pass
