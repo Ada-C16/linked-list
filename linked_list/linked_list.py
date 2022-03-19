@@ -5,6 +5,7 @@ class Node:
     def __init__(self, value, next_node = None, prev_node = None):
         self.value = value
         self.next = next_node
+        self.prev = prev_node
 
 # Defines the singly linked list
 class LinkedList:
@@ -40,6 +41,8 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def search(self, value):
+        if self.head == None:
+            return None
         # true if head has a value
         current = self.head
         # if current == None:
@@ -118,32 +121,44 @@ class LinkedList:
 
     # method to return the max value in the linked list
     # returns the data value and not the node
+    # Time Complexity 
+    # Space Complexity
     def find_max(self):
-        current = self.head
-
-        max_value = 0
-        if current.value == 0:
+        if self.head == None:
             return None
+
+        current = self.head
+        max_value = current.value
         
         while current != None:
             if current.value > max_value:
                 max_value = current.value
-                current = current.next
+            current = current.next
             
         return max_value
 
     # method to delete the first node found with specified value
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: Flag O(1) ; If & Else O(n)
+    # Space Complexity: O(n)
     def delete(self, value):
-        current = self.head
-    
-        while current.value != value:
-            current = current.next
-        current.value = current.next.value
-        current.next = current.next.next
+        if self.head == None:
+            return None
 
-        pass
+        current = self.head
+        # removing from the first by reassigning the head
+        if current.value == value:
+            # EX: 2-4-6-8 ; head will be 4 & LL: 4-6-8
+            self.head = self.next
+        else:  
+            # handles the removal for 4-6-8 ; EX: 2-4-6-8
+            # if the next node in list != None
+            while current.next != None:
+                if current.next.value == value:
+                    # removing from the middle or the end
+                    current.next = current.next.next
+                # iterates through the list 
+                # moves the pointer throughout the list
+                current = current.next
 
     # method to print all the values in the linked list
     # Time Complexity: ?
@@ -163,7 +178,15 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def reverse(self):
-        pass
+        prev_node = None
+        current = self.head
+
+        while current != None:
+            next_node = current.next
+            current.next = prev_node
+            prev_node = current
+            current = next_node
+        self.head = prev_node
   
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
