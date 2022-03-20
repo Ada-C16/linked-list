@@ -80,11 +80,16 @@ class LinkedList:
             return None
 
         while current_index <= index:
-            if current_index == index:
-                return current.value
-            else:
-                current_index += 1
+            if current_index != index:
                 current = current.next
+                current_index +=1
+            elif current_index == index:
+                return current.value
+            # if current_index == index:
+            #     return current.value
+            # else:
+            #     current_index += 1
+            #     current = current.next
 
     # method that returns the value of the last node in the linked list
     # returns None if the linked list is empty
@@ -176,7 +181,20 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def reverse(self):
-        pass
+        if self.head is None:
+            return None
+
+        current = self.head
+        previous = None
+
+        while current is not None:
+            next = current.next # track next node
+            current.next = previous # change next node to previous node/switching
+            previous = current # previous is pointing to something instead of None
+            current = next # current shifts to the next node of the original, which is now previous
+
+        self.head = previous # head now points to what is the former last item
+
 
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
