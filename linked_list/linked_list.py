@@ -169,7 +169,7 @@ class LinkedList:
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
     # Time Complexity: O(n^2)
-    # Space Complexity: ...
+    # Space Complexity: size of linkedList object O(n)?
     def reverse(self):
         import copy
         current = copy.deepcopy(self) # O(n)? how big is LinkedList() object
@@ -196,7 +196,7 @@ class LinkedList:
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
     # Time Complexity: O(n^2)
-    # Space Complexity: ?
+    # Space Complexity: size of linkedList object O(n)?
     def find_nth_from_end(self, n):
         if n >= self.length(): # O(n)
             return None
