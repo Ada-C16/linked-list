@@ -2,9 +2,10 @@
 # Defines a node in the singly linked list
 class Node:
 
-    def __init__(self, value, next_node = None):
+    def __init__(self, value, next_node = None, prev_node = None):
         self.value = value
         self.next = next_node
+        self.previous = prev_node
 
 # Defines the singly linked list
 class LinkedList:
@@ -21,11 +22,10 @@ class LinkedList:
 
         return self.head.value
 
-
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(1)
+    # Space Complexity: O(1)
     def add_first(self, value):
         if self.head is None:
             self.head = self.tail = Node(value)
@@ -39,7 +39,19 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def search(self, value):
-        pass
+        # create variable that stores self.head
+        current = self.head
+
+        #loop through node to 1) see if it's empty 2) see if we can find our value 
+        # 2a) if we don't find value return false
+        # 2b) if we find value return true
+
+        while current is not None:
+            if current.value == value:
+                return True
+            current = current.next 
+        return False 
+
 
     # method that returns the length of the singly linked list
     # Time Complexity: ?
@@ -94,11 +106,25 @@ class LinkedList:
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse(self):
-        pass
-  
+        if self.head == self.tail:
+            return
+        
+        current = self.head
+
+        while current is not None:
+            prev = current.previous
+            next = current.next
+            current.next = prev
+            current.previous = next
+            current = next
+
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
     # Time Complexity: ?
