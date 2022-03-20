@@ -26,8 +26,8 @@ class LinkedList:
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(1) 
+    # Space Complexity: O(1)
     def add_first(self, value):
         if self.head is None:
             self.head = self.tail = Node(value)
@@ -39,10 +39,18 @@ class LinkedList:
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def search(self, value):
-        pass
+        if (self.head == None):
+            return False
+
+        current = self.head
+        while current != None:
+            if current.value == value: 
+                return True
+            current = current.next
+        return False
 
     # method that returns the length of the singly linked list
     # Time Complexity: ?
@@ -97,10 +105,22 @@ class LinkedList:
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse(self):
-        pass
+        if self.head == self.tail:
+            return
+        current = self.head
+        while current is not None:
+            prev = current.previous
+            next = current.next
+            current.next = prev
+            current.previous = next 
+            current = next 
+            
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp 
   
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
