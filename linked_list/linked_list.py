@@ -2,21 +2,26 @@
 # Defines a node in the singly linked list
 class Node:
 
-    def __init__(self, value, next_node = None):
+    def __init__(self, value, next_node = None, prev_node = None):
         self.value = value
         self.next = next_node
+        self.previous = prev_node
+        
 
 # Defines the singly linked list
 class LinkedList:
     def __init__(self):
-      self.head = None # keep the head private. Not accessible outside this class
-
+        self.head = None # keep the head private. Not accessible outside this class
+        self.tail = None 
     # returns the value in the first node
     # returns None if the list is empty
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(1)
+    # Space Complexity: O(1)
     def get_first(self):
-        pass
+        if self.head is None:
+            return None
+        
+        return self.head.value
 
 
     # method to add a new node with the specific data value in the linked list
@@ -24,7 +29,13 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def add_first(self, value):
-        pass
+        if self.head is None:
+            self.head = self.tail = Node(value)
+        else: 
+            new_node = Node (value, self.head)
+            self.head.previous = new_node
+            self.head = new_node
+        
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
