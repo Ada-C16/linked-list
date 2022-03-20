@@ -85,11 +85,6 @@ class LinkedList:
                 current_index +=1
             elif current_index == index:
                 return current.value
-            # if current_index == index:
-            #     return current.value
-            # else:
-            #     current_index += 1
-            #     current = current.next
 
     # method that returns the value of the last node in the linked list
     # returns None if the linked list is empty
@@ -201,14 +196,20 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def find_middle_value(self):
-        pass
+        list_length = self.length()
+
+        search = list_length // 2
+        
+        return self.get_at_index(search)
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
     # Time Complexity: ?
     # Space Complexity: ?
     def find_nth_from_end(self, n):
-        pass
+        desired_index = self.length() - n - 1
+        
+        return self.get_at_index(desired_index)
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
@@ -216,7 +217,19 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def has_cycle(self):
-        pass
+        current = self.head
+        has_visited = []
+        
+        if current is None:
+            return False
+        else:
+            while current:
+                has_visited.append(current)
+                if current.next in has_visited:
+                    return True
+                current = current.next
+        
+        return False
 
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
