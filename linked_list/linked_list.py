@@ -98,15 +98,41 @@ class LinkedList:
                 return current.value
 
     # method that inserts a given value as a new last node in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def add_last(self, value):
-        pass
+        if self.head is None:
+            new_node = Node(value)
+            self.head = new_node
+        else:
+            current = self.head
+
+            while current is not None:
+                if current.next:
+                    current = current.next
+                else:
+                    new_node = Node(value)
+                    current.next = new_node
+                    current = current.next
+                    break
+
 
     # method to return the max value in the linked list
     # returns the data value and not the node
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_max(self):
-        pass
+        if self.head is None:
+            return None
+        
+        current_max = self.head.value
+        current = self.head
+
+        while current is not None:
+            if current_max < current.value:
+                current_max = current.value
+            current = current.next
+        return current_max
 
     # method to delete the first node found with specified value
     # Time Complexity: ?
