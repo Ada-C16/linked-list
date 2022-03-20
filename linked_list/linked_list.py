@@ -80,11 +80,6 @@ class LinkedList:
     def get_last(self):
         if self.head is None:
             return None
-
-        # current = self.head
-        # while current.next is not None:
-        #     current = current.next
-        # return current.value
         return self.tail.value
 
     # method that inserts a given value as a new last node in the linked list
@@ -132,76 +127,12 @@ class LinkedList:
             if current.value == value:
                 current.next = current.next.next
                 return
-                # if tail?
             prev = current
             current = current.next
         # tail
         if current.value == value:
             prev.next = None
             self.tail = prev
-
-        # while node.val is not data:
-        #         node = node.next
-        #     node.val = node.next.val
-        #     node.next = node.next.next
-
-        # copy = self.head
-        # # empty list
-        
-        # # first one is value
-        # if copy.value == value:
-        #     self.head = copy.next
-        #     return 
-        # # middle -> end
-        # # while still in list
-        #     # if current is match
-        #         # stop
-            
-        # while copy is not None:
-        #     if copy.value == value:
-        #         prev.next = copy.next
-        #         return
-        #         # copy = None
-        #     prev = copy
-        #     copy = copy.next
-        # if copy.value == value
-        # current = self.head
-        # if current is None:
-        #     return 
-        # # elif current == self.tail and current.value == value:
-        # #     self.head = None
-        # #     self.tail = None
-        # #     return
-
-        # if current.value == value:
-        #     self.head = Node(self.head.next.value, self.head.next.next)
-        #     return
-        # while current.next is not None:
-        #     if current.next.value == value:
-        #             current.next = current.next.next
-        #             self.tail = current
-        #             return
-
-        #     current = current.next
-        # if self.head is None:
-        #     return None
-        # elif self.head == self.tail:
-        #     self.head = None
-        #     self.tail = None
-        # else:
-        #     current = self.head
-        #     while current.next is not None:
-        #         if current.value == value:
-        #             if current.next == self.head:
-        #                 self.head.value = self.head.next.value
-        #                 self.head.next = self.head.next.next
-                    
-        #             if current.next.next is not None:
-        #                 current.next = current.next.next
-        #             else:
-        #                 current.next = None
-        #             return 
-        #         current = current.next
 
     # method to print all the values in the linked list
     # Time Complexity: ?
@@ -232,14 +163,6 @@ class LinkedList:
             current = current.next
         current.next = None
         self.tail = current
-        # current = self.head
-        # while current.next.next is not None:
-        #     prev = current
-        #     current = current.next
-
-        # prev = current.next
-        # current.next = None
-        # prev = None
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
@@ -247,8 +170,6 @@ class LinkedList:
     # Space Complexity: ?
     def reverse(self):
         import copy
-        # copy = self.head
-        # tail = self.tail
         current = copy.deepcopy(self)
         self.head = None
         self.tail = None
@@ -257,18 +178,6 @@ class LinkedList:
         while current.head is not None: #:weary:
             self.add_last(current.get_last())
             current.delete_last()
- 
-        
-        
-        # copy = self.head
-        # self.head = Node(self.get_last())
-        # self.tail = self.head
-        # # iterate through len(list) in reverse
-        # for i in range(self.length()-1,0):
-        #     self.head.next = Node(self.get_at_index(i))
-        #     self.tail = self.head.next
-        # # get index
-        # # add last
   
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
