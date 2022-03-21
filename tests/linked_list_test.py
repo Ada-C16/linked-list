@@ -265,3 +265,4 @@ def test_has_cycle(list):
     list.create_cycle()
 
     assert list.has_cycle() == True
+
