@@ -125,13 +125,13 @@ class LinkedList:
     # method to return the max value in the linked list
     # returns the data value and not the node
     def find_max(self):
-        max_value = 0
+        max_value = None
         current = self.head
         if current is None:
             return None
         else:
             while current:
-                if current.value > max_value:
+                if (max_value is None) or (current.value > max_value):
                     max_value = current.value
                 else:
                     current = current.next
