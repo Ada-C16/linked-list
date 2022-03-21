@@ -147,13 +147,24 @@ class LinkedList:
             return None
 
         current = self.head
-        while current is not None:
+        prev_node = current.previous
+        next_node = current.next
+
+        while current:
             if current.value == value:
-                temp = current.previous
-                current.previous.next = current.next
-                current.next.previous = temp
-            else:  
+                if prev_node == None:
+                    next_node.previous = None
+                    self.head = next_node
+                    current = None
+                elif next_node == None:
+                    prev_node.next = None
+                    self.tail = prev_node
+                else:
+                    prev_node.next = next_node
+                    next_node.previous = prev_node
+            else:
                 current = current.next
+                
 
     # method to print all the values in the linked list
     # Time Complexity: ?
@@ -170,8 +181,8 @@ class LinkedList:
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse(self):
 
         if self.head == self.tail:
@@ -181,8 +192,8 @@ class LinkedList:
         current = self.head
 
         while current is not None:
-            prev = self.head.previous
-            next = self.head.next
+            prev = current.previous
+            next = current.next
             current.next = prev
             current.previous = next
             current = next
