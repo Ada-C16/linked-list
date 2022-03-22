@@ -243,10 +243,19 @@ class LinkedList:
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def has_cycle(self):
-        pass
+        s = set()
+        current = self.head
+
+        while current is not None:
+            if current in s:
+                return True
+            s.add(current)
+            current = current.next
+        return False
+            
 
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
