@@ -196,7 +196,21 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def find_middle_value(self):
-        pass
+        length = 0
+        current = self.head
+
+        while current is not None:
+            length += 1
+            current = current.next
+        
+        mid = length //2
+        current = self.head
+        idx = 0
+
+        while idx < mid:
+            idx += 1
+            current = current.next
+        return current.value
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
