@@ -147,23 +147,24 @@ class LinkedList:
             return None
 
         current = self.head
-        prev_node = current.previous
-        next_node = current.next
 
         while current:
             if current.value == value:
-                if prev_node == None:
-                    next_node.previous = None
-                    self.head = next_node
+                if current.previous == None:
+                    current.next.previous = None
+                    self.head = current.next
                     current = None
-                elif next_node == None:
-                    prev_node.next = None
-                    self.tail = prev_node
+                elif current.next == None:
+                    current.previous.next = None
+                    self.tail = current.previous
+                    current = None
                 else:
-                    prev_node.next = next_node
-                    next_node.previous = prev_node
+                    current.previous.next = current.next
+                    current.next.previous = current.previous
+                    current = None
             else:
                 current = current.next
+                
                 
 
     # method to print all the values in the linked list
