@@ -39,12 +39,7 @@ class LinkedList:
     # Time Complexity: O(n)
     # Space Complexity: O(1)
     def search(self, value):
-        # create variable that stores self.head
         current = self.head
-
-        #loop through node to 1) see if it's empty 2) see if we can find our value 
-        # 2a) if we don't find value return false
-        # 2b) if we find value return true
 
         while current is not None:
             if current.value == value:
@@ -83,31 +78,68 @@ class LinkedList:
 
     # method that returns the value of the last node in the linked list
     # returns None if the linked list is empty
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def get_last(self):
-        pass
+        current = self.head
+
+        if self.head == None:
+            return None
+
+        while current.next is not None:
+            current = current.next
+        return current.value
 
     # method that inserts a given value as a new last node in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def add_last(self, value):
-        pass
+        current = self.head
+
+        if self.head == None:
+            self.add_first(value)
+        else:
+            while current.next is not None:
+                current = current.next
+            current.next = Node(value)
 
     # method to return the max value in the linked list
     # returns the data value and not the node
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_max(self):
-        pass
+        current = self.head
+
+        if self.head == None:
+            return None
+
+        max = current.value
+
+        while current is not None:
+            if current.value > max:
+                max = current.value
+            current = current.next
+        return max 
 
     # method to delete the first node found with specified value
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def delete(self, value):
-        pass
+        current = self.head
+        
+        if self.head == None:
+            return None
+
+        if self.head.value == value:
+            self.head = self.head.next
+        else:
+            while current.next.value != value:
+                current = current.next
+            current.next = current.next.next 
 
     # method to print all the values in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def visit(self):
         helper_list = []
         current = self.head
