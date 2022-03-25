@@ -97,7 +97,6 @@ class LinkedList:
         if not self.head:
             return None
         
-
         i = 0
         current_node = self.head
         while current_node: 
@@ -106,7 +105,6 @@ class LinkedList:
             current_node = current_node.next 
             i += 1 
 
-        
         return None
 
     # method that returns the value of the last node in the linked list
@@ -114,13 +112,21 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def get_last(self):
-        pass
-
+        if not self.head:
+            return None
+        if self.head == self.tail:
+            return self.head.value
+        
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity: ?
     # Space Complexity: ?
     def add_last(self, value):
-        pass
+        if not self.head:
+            self.head = self.tail = Node(value)
+        else:
+            new_node = Node(value, None, self.tail)
+            self.tail.next = new_node
+            self.tail = new_node
 
     # method to return the max value in the linked list
     # returns the data value and not the node

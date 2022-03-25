@@ -88,12 +88,12 @@ def test_get_at_index(list):
     assert list.get_at_index(2) == 2
     assert list.get_at_index(3) == 1
 
-# def test_get_last_on_empty_list_returns_none(list):
-#     assert list.get_last() == None
+def test_get_last_on_empty_list_returns_none(list):
+    assert list.get_last() == None
 
-# def test_get_last_returns_the_last_element_of_a_list(list):
-#     list.add_first(5)
-#     assert list.get_last() == 5
+def test_get_last_returns_the_last_element_of_a_list(list):
+    list.add_first(5)
+    assert list.get_last() == 5
 
 #     list.add_first(4)
 #     assert list.get_last() == 5
@@ -102,30 +102,30 @@ def test_get_at_index(list):
 #     list.add_last(1)
 #     assert list.get_at_index(0) == 1
 
-# def test_add_last_increases_length_and_new_item_appears_at_back_of_list(list):
-#     assert list.length() == 0
+def test_add_last_increases_length_and_new_item_appears_at_back_of_list(list):
+    assert list.length() == 0
 
-#     list.add_last(5)
-#     assert list.length() == 1
-#     assert list.get_last() == 5
-#     assert list.get_first() == 5
+    list.add_last(5)
+    assert list.length() == 1
+    assert list.get_last() == 5
+    assert list.get_first() == 5
 
-#     list.add_last(4)
-#     assert list.length() == 2
-#     assert list.get_last() == 4
+    list.add_last(4)
+    assert list.length() == 2
+    assert list.get_last() == 4
 
-#     list.add_last(3)
-#     assert list.length() == 3
-#     assert list.get_last() == 3
+    list.add_last(3)
+    assert list.length() == 3
+    assert list.get_last() == 3
 
-#     list.add_last(2)
-#     assert list.length() == 4
-#     assert list.get_last() == 2
+    list.add_last(2)
+    assert list.length() == 4
+    assert list.get_last() == 2
 
-#     list.add_last(1)
-#     assert list.length() == 5
-#     assert list.get_last() == 1
-#     assert list.get_first() == 5
+    list.add_last(1)
+    assert list.length() == 5
+    assert list.get_last() == 1
+    assert list.get_first() == 5
 
 
 # def test_find_max_on_empty_list_should_return_none(list):
