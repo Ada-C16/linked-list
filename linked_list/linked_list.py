@@ -138,13 +138,39 @@ class LinkedList:
     # method to return the max value in the linked list
     # returns the data value and not the node
     def find_max(self):
-        pass
+        if not self.head:
+            return None
+
+        max = self.head.value
+        current_node = self.head
+
+        while current_node:
+            if current_node.value > max:
+                max = current_node.value
+            else:
+                current_node = current_node.next
+        
+        return max
 
     # method to delete the first node found with specified value
     # Time Complexity: ?
     # Space Complexity: ?
     def delete(self, value):
-        pass
+        if not self.search(value): #if the value is in the list,
+            return None
+        
+        current_node = self.head
+        while current_node:
+            if current_node.value == value:
+                #delete the node
+                #so reassign the 
+            else:
+                current_node = current_node.next
+        
+        
+        
+
+
 
     # method to print all the values in the linked list
     # Time Complexity: ?

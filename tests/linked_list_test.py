@@ -128,35 +128,35 @@ def test_add_last_increases_length_and_new_item_appears_at_back_of_list(list):
     assert list.get_first() == 5
 
 
-# def test_find_max_on_empty_list_should_return_none(list):
-#     assert list.find_max() == None
+def test_find_max_on_empty_list_should_return_none(list):
+    assert list.find_max() == None
 
-# def test_find_max_on_list_where_max_is_first_item(list):
-#     list.add_first(1)
-#     list.add_first(2)
-#     list.add_first(3)
-#     list.add_first(4)
-#     list.add_first(5)
+def test_find_max_on_list_where_max_is_first_item(list):
+    list.add_first(1)
+    list.add_first(2)
+    list.add_first(3)
+    list.add_first(4)
+    list.add_first(5)
 
-#     assert list.find_max() == 5
+    assert list.find_max() == 5
 
-# def test_find_max_on_list_where_max_is_last_item(list):
-#     list.add_first(27)
-#     list.add_first(4)
-#     list.add_first(3)
-#     list.add_first(2)
-#     list.add_first(1)
+def test_find_max_on_list_where_max_is_last_item(list):
+    list.add_first(27)
+    list.add_first(4)
+    list.add_first(3)
+    list.add_first(2)
+    list.add_first(1)
 
-#     assert list.find_max() == 27
+    assert list.find_max() == 27
 
-# def test_find_max_on_list_where_max_is_middle_item(list):
-#     list.add_first(1)
-#     list.add_first(2)
-#     list.add_first(27)
-#     list.add_first(4)
-#     list.add_first(5)
+def test_find_max_on_list_where_max_is_middle_item(list):
+    list.add_first(1)
+    list.add_first(2)
+    list.add_first(27)
+    list.add_first(4)
+    list.add_first(5)
 
-#     assert list.find_max() == 27
+    assert list.find_max() == 27
 
 # def test_delete_on_empty_list_returns_none(list):
 #     assert list.delete(2) == None
