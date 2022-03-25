@@ -1,22 +1,29 @@
-
-# Defines a node in the singly linked list
+#I am doing a doubly linked list instead
 class Node:
 
-    def __init__(self, value, next_node = None):
+    def __init__(self, value, next_node = None, prev_node = None):
         self.value = value
         self.next = next_node
+        self.previous = prev_node
 
 # Defines the singly linked list
 class LinkedList:
     def __init__(self):
-      self.head = None # keep the head private. Not accessible outside this class
+        self.head = None # keep the head private. Not accessible outside this class
+        self.tail = None 
+
 
     # returns the value in the first node
     # returns None if the list is empty
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(1)
+    # Space Complexity: O(1)
     def get_first(self):
-        pass
+        #could be empty
+        if not self.head:
+            return None
+        
+        #if it is not empty, return the head node's value
+        return self.head.value
 
 
     # method to add a new node with the specific data value in the linked list
@@ -24,7 +31,23 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def add_first(self, value):
-        pass
+        #could be empty
+        if not self.head:
+            #given that my list is empty,
+            #i am making a new node
+            #and this node is both the head the tail
+            self.head = self.tail = Node(value)
+        else:
+            #i am still making a new node
+            #and i want to assign the next value as the current head
+            new_node = Node(value, self.head)
+            #then i want to assign the node in front of the current head to the new node
+            self.head.previous = new_node
+            #and once that is done, I want to assign the new node as the new head
+            self.head = new_node 
+            #it has to be done in this order so that the chain isn't broken
+            
+
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
