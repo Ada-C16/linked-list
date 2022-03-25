@@ -24,34 +24,34 @@ def test_add_first_adds_to_start_of_list(list):
     assert list.get_first() == 'pasta'
 
 
-# def test_search_returns_false_for_empty_list(list):
-#     assert list.search(3) == False
+def test_search_returns_false_for_empty_list(list):
+    assert list.search(3) == False
 
 
-# def test_search_returns_false_for_items_not_in_list(list):
-#     list.add_first(3)
-#     list.add_first(4)
-#     assert list.search(5) == False
+def test_search_returns_false_for_items_not_in_list(list):
+    list.add_first(3)
+    list.add_first(4)
+    assert list.search(5) == False
 
-# def test_search_returns_true_for_items_in_front_of_list(list):
-#     list.add_first(3)
-#     list.add_first(4)
-#     assert list.search(4) == True
-
-
-# def test_search_returns_true_for_items_in_back_of_list(list):
-#     list.add_first('pasta')
-#     list.add_first(3)
-#     list.add_first(4)
-#     assert list.search('pasta') == True
+def test_search_returns_true_for_items_in_front_of_list(list):
+    list.add_first(3)
+    list.add_first(4)
+    assert list.search(4) == True
 
 
-# def test_search_returns_true_for_items_in_middle_of_list(list):
-#     list.add_first(3)
-#     list.add_first(4)
-#     list.add_first(5)
-#     list.add_first(6)
-#     assert list.search(5) == True
+def test_search_returns_true_for_items_in_back_of_list(list):
+    list.add_first('pasta')
+    list.add_first(3)
+    list.add_first(4)
+    assert list.search('pasta') == True
+
+
+def test_search_returns_true_for_items_in_middle_of_list(list):
+    list.add_first(3)
+    list.add_first(4)
+    list.add_first(5)
+    list.add_first(6)
+    assert list.search(5) == True
 
 def test_length_returns_0_for_empty_list(list):
     assert list.length() == 0
