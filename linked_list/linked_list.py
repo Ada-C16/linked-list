@@ -112,10 +112,17 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def get_last(self):
+        #if my list is no nodes
         if not self.head:
             return None
+        
+        #if my list is one node 
         if self.head == self.tail:
             return self.head.value
+
+        #if my list is longer than just one node
+        return self.tail.value
+
         
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity: ?
