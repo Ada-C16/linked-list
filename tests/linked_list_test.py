@@ -73,20 +73,20 @@ def test_length_increases_in_value_with_each_add_first(list):
         count += 1
         assert list.length() == count
 
-# def test_get_at_index_with_empty_list_is_none(list):
-#     assert list.get_at_index(3) == None
+def test_get_at_index_with_empty_list_is_none(list):
+    assert list.get_at_index(3) == None
 
-# def test_get_at_index(list):
+def test_get_at_index(list):
 
-#     list.add_first(1)
-#     list.add_first(2)
-#     list.add_first(3)
-#     list.add_first(4)
+    list.add_first(1)
+    list.add_first(2)
+    list.add_first(3)
+    list.add_first(4)
 
-#     assert list.get_at_index(0) == 4
-#     assert list.get_at_index(1) == 3
-#     assert list.get_at_index(2) == 2
-#     assert list.get_at_index(3) == 1
+    assert list.get_at_index(0) == 4
+    assert list.get_at_index(1) == 3
+    assert list.get_at_index(2) == 2
+    assert list.get_at_index(3) == 1
 
 # def test_get_last_on_empty_list_returns_none(list):
 #     assert list.get_last() == None

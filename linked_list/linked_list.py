@@ -94,7 +94,20 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def get_at_index(self, index):
-        pass
+        if not self.head:
+            return None
+        
+
+        i = 0
+        current_node = self.head
+        while current_node: 
+            if i == index:
+                return current_node.value
+            current_node = current_node.next 
+            i += 1 
+
+        
+        return None
 
     # method that returns the value of the last node in the linked list
     # returns None if the linked list is empty
