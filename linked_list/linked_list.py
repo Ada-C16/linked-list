@@ -46,7 +46,6 @@ class LinkedList:
             #and once that is done, I want to assign the new node as the new head
             self.head = new_node 
             #it has to be done in this order so that the chain isn't broken
-            
 
 
     # method to find if the linked list contains a node with specified value
@@ -60,7 +59,23 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def length(self):
-        pass
+        #if there's no head, the length is zero
+        if not self.head:
+            return 0
+        #otherwise, how could I get the length?
+        #by iterating
+        #starting at the head, count until there's no self.next?
+        counter = 0
+        current_node = self.head
+        while current_node: #while there is a next node,
+            counter += 1 #add one to counter
+            current_node = current_node.next #make the current node the next node
+        
+        return counter
+
+
+
+        
 
     # method that returns the value at a given index in the linked list
     # index count starts at 0
