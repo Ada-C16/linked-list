@@ -153,10 +153,6 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def delete(self, value):
-        
-        # if not self.search(value): #if the value is in the list,
-        #     return None
-        
         current_node = self.head
         while current_node:
             if current_node.value == value:
@@ -170,9 +166,6 @@ class LinkedList:
                     self.tail.next = None
                     return
 
-                #delete the node
-                #assign current next to next's next
-                #assign current prev to
                 current_node.previous.next = current_node.next
                 current_node.next.previous = current_node.previous
                 return
@@ -197,18 +190,23 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def reverse(self):
-        pass
-        #head becomes tail, tail becomes head
-        #just need to switch the head and tail references?
+        current_node = self.head
+        while current_node:
+            # next_node = current_node.next
+            old_next = current_node.next
+            old_previous = current_node.previous
 
-        # current_node = self.head
-        # while current_node:
-        #     current_node 
+            current_node.next = old_previous
+            current_node.previous = old_next
 
-  
+            current_node = old_next
 
+        old_head = self.head
+        old_tail = self.tail
 
-
+        self.head = old_tail
+        self.tail = old_head
+    
 ###############################################
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
