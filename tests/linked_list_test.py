@@ -158,44 +158,44 @@ def test_find_max_on_list_where_max_is_middle_item(list):
 
     assert list.find_max() == 27
 
-# def test_delete_on_empty_list_returns_none(list):
-#     assert list.delete(2) == None
+def test_delete_on_empty_list_returns_none(list):
+    assert list.delete(2) == None
 
-# def test_delete_can_remove_first_element_of_list(list):
-#     list.add_first(5)
-#     list.add_first(4)
-#     list.add_first(3)
-#     list.delete(3)
-#     assert list.get_first() == 4
-#     assert list.length() == 2
-#     assert list.get_last() == 5
+def test_delete_can_remove_first_element_of_list(list):
+    list.add_first(5)
+    list.add_first(4)
+    list.add_first(3)
+    list.delete(3)
+    assert list.get_first() == 4
+    assert list.length() == 2
+    assert list.get_last() == 5
 
-# def test_delete_can_remove_last_element_of_list(list):
-#     list.add_first(5)
-#     list.add_first(4)
-#     list.add_first(3)
-#     list.delete(5)
-#     assert list.get_first() == 3
-#     assert list.length() == 2
-#     assert list.get_last() == 4
+def test_delete_can_remove_last_element_of_list(list):
+    list.add_first(5)
+    list.add_first(4)
+    list.add_first(3)
+    list.delete(5)
+    assert list.get_first() == 3
+    assert list.length() == 2
+    assert list.get_last() == 4
 
-# def test_delete_can_remove_middle_element_of_list(list):
-#     list.add_first(5)
-#     list.add_first(4)
-#     list.add_first(3)
-#     list.delete(4)
-#     assert list.get_first() == 3
-#     assert list.length() == 2
-#     assert list.get_last() == 5
+def test_delete_can_remove_middle_element_of_list(list):
+    list.add_first(5)
+    list.add_first(4)
+    list.add_first(3)
+    list.delete(4)
+    assert list.get_first() == 3
+    assert list.length() == 2
+    assert list.get_last() == 5
 
-# def test_reverse_will_reverse_five_element_list(list):
-#     for i in range(0, 5):
-#         list.add_first(i)
+def test_reverse_will_reverse_five_element_list(list):
+    for i in range(0, 5):
+        list.add_first(i)
     
-#     list.reverse()
+    list.reverse()
     
-#     for i in range(0, 5):
-#         assert list.get_at_index(i) == i
+    for i in range(0, 5):
+        assert list.get_at_index(i) == i
 
 # @pytest.mark.skip(reason="Going Further methods")
 # def test_find_middle_value_returns_middle_element_of_five_element_list(list):

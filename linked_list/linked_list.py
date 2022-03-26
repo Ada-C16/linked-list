@@ -85,9 +85,6 @@ class LinkedList:
         return counter
 
 
-
-        
-
     # method that returns the value at a given index in the linked list
     # index count starts at 0
     # returns None if there are fewer nodes in the linked list than the index value
@@ -156,22 +153,32 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def delete(self, value):
-        if not self.search(value): #if the value is in the list,
-            return None
+        
+        # if not self.search(value): #if the value is in the list,
+        #     return None
         
         current_node = self.head
         while current_node:
             if current_node.value == value:
+                if current_node == self.head:
+                    self.head = current_node.next
+                    self.head.previous = None
+                    return
+                
+                if current_node == self.tail:
+                    self.tail = current_node.previous
+                    self.tail.next = None
+                    return
+
                 #delete the node
-                #so reassign the 
+                #assign current next to next's next
+                #assign current prev to
+                current_node.previous.next = current_node.next
+                current_node.next.previous = current_node.previous
+                return
             else:
                 current_node = current_node.next
         
-        
-        
-
-
-
     # method to print all the values in the linked list
     # Time Complexity: ?
     # Space Complexity: ?
@@ -191,7 +198,18 @@ class LinkedList:
     # Space Complexity: ?
     def reverse(self):
         pass
+        #head becomes tail, tail becomes head
+        #just need to switch the head and tail references?
+
+        # current_node = self.head
+        # while current_node:
+        #     current_node 
+
   
+
+
+
+###############################################
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
     # Time Complexity: ?
