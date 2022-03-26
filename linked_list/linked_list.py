@@ -213,7 +213,14 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def find_middle_value(self):
-        pass
+        #use the functions I've already written
+        #get the length
+        #calculate middle index
+        #pass that into get val at index
+        length = self.length()
+        middle = length // 2
+
+        return self.get_at_index(middle)
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
