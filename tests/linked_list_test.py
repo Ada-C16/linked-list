@@ -197,7 +197,7 @@ def test_reverse_will_reverse_five_element_list(list):
     for i in range(0, 5):
         assert list.get_at_index(i) == i
 
-@pytest.mark.skip(reason="Going Further methods")
+# @pytest.mark.skip(reason="Going Further methods")
 def test_find_middle_value_returns_middle_element_of_five_element_list(list):
     list.add_first(10)
     list.add_first(30)
