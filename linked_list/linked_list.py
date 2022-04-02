@@ -1,5 +1,8 @@
 
 # Defines a node in the singly linked list
+from cgi import print_environ_usage
+
+
 class Node:
 
     def __init__(self, value, next_node = None):
@@ -132,13 +135,14 @@ class LinkedList:
                     if current.next != None:
                         current.value = current.next.value
                         current.next = current.next.next
-                    previous.next = None
+                    else:
+                        previous.next = None
                 previous = current
                 current = current.next
 
     # method to print all the values in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def visit(self):
         helper_list = []
         current = self.head
@@ -151,10 +155,22 @@ class LinkedList:
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse(self):
-        pass
+        if self.head == None:
+            return None
+
+        #initialize trackers
+        current = self.head
+        previous = None
+
+        while current != None:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+        self.head = previous
 
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
