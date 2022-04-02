@@ -1,7 +1,5 @@
 
 # Defines a node in the singly linked list
-from cgi import print_environ_usage
-
 
 class Node:
 
