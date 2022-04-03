@@ -73,26 +73,54 @@ class LinkedList:
             current = current.next
         return current.value
 
-    # method that inserts a given value as a new last node in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def add_last(self, value):
-        pass
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next is not None :
+            current = current.next
+        current.next = new_node
 
-    # method to return the max value in the linked list
-    # returns the data value and not the node
+    # Time Complexity:O(n)
+    # Space Complexity: O(1)
     def find_max(self):
-        pass
+        if self.head is None:
+            return
+        max_value = None
+        current = self.head
+        while current is not None:
+            if max_value is None or current.value > max_value:
+                max_value = current.value
+            current = current.next
+        return max_value
 
-    # method to delete the first node found with specified value
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def delete(self, value):
-        pass
-
-    # method to print all the values in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+        if self.head == None:
+            return None
+        if  value == self.head.value and self.head.next is None:
+            self.head = None
+            return
+        if  value == self.head.value:
+            self.head=self.head.next
+            return
+        current = self.head
+        while current.next is not None:
+            if value == current.next.value:
+                break
+            current = current.next
+        if current.next is None:
+            print("Node not found") 
+        else:
+            current.next = current.next.next
+    
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def visit(self):
         helper_list = []
         current = self.head
@@ -103,34 +131,63 @@ class LinkedList:
         
         print(", ".join(helper_list))
 
-    # method to reverse the singly linked list
-    # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse(self):
-        pass
+        if self.head == None:
+            return
+        if self.head.next is None:
+            return self.head
+        prev = None
+        current = self.head
+        while current is not None:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
   
-    ## Advanced/ Exercises
-    # returns the value at the middle element in the singly linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_middle_value(self):
-        pass
+        if self.head == None:
+            return
+        if self.head.next is None:
+            return self.head
+        current = self.head
+        count = 0
+        n = self.length()//2
+        while current is not None:
+            if count == n:
+                return current.value
+            count += 1
+            current = current.next
 
-    # find the nth node from the end and return its value
-    # assume indexing starts at 0 while counting to n
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_nth_from_end(self, n):
-        pass
+        if self.head is None or (n+1) > self.length():
+            return None 
+        current = self.head
+        count = 0
+        len = self.length()
+        while current is not None:
+            if count == len - (n + 1):
+                return current.value
+            current = current.next
+            count += 1
 
-    # checks if the linked list has a cycle. A cycle exists if any node in the
-    # linked list links to a node already visited.
-    # returns true if a cycle is found, false otherwise.
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def has_cycle(self):
-        pass
+        linked_set = set()
+        current = self.head
+        while current is not None:
+            if current in linked_set:
+                return True
+            linked_set.add(current)
+            current = current.next
+        return False
 
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
@@ -138,7 +195,6 @@ class LinkedList:
     def create_cycle(self):
         if self.head == None:
             return
-
         # navigate to last node
         current = self.head
         while current.next != None:
