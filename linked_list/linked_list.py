@@ -5,12 +5,14 @@ from unittest.mock import sentinel
 
 class Node:
 
-    def __init__(self, value, next_node = None, prev_node = None):
+    def __init__(self, value, next_node=None, prev_node=None):
         self.value = value
         self.next = next_node
         self.prev = prev_node
 
 # Defines the singly linked list
+
+
 class LinkedList:
     def __init__(self):
         self.__sentinel = Node(None)
@@ -42,7 +44,7 @@ class LinkedList:
     def search(self, value):
         current_node = self.__sentinel.next
 
-        while(current_node.value is not None):
+        while current_node.value is not None:
             if current_node.value == value:
                 return True
             current_node = current_node.next
@@ -62,8 +64,10 @@ class LinkedList:
     # Space Complexity: O(1)
     def get_at_index(self, index):
         current_node = self.__sentinel.next
-        while(index > 0):
-            if current_node.value is None: return None
+
+        while index > 0:
+            if current_node.value is None:
+                return None
             current_node = current_node.next
             index -= 1
         return current_node.value
@@ -91,7 +95,8 @@ class LinkedList:
         max_value = None
 
         while current_node.value is not None:
-            max_value = max(max_value, current_node.value) if max_value else current_node.value
+            max_value = max(
+                max_value, current_node.value) if max_value else current_node.value
             current_node = current_node.next
 
         return max_value
@@ -132,7 +137,7 @@ class LinkedList:
         list_len = self.length()
         new_list = LinkedList()
 
-        for i in range(list_len):
+        for _ in range(list_len):
             first_value = self.get_first()
             self.delete(first_value)
             new_list.add_first(first_value)
@@ -142,36 +147,60 @@ class LinkedList:
 
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_middle_value(self):
-        pass
+        mid = self.length() // 2
+        current_node = self.__sentinel.next
+
+        for _ in range(mid):
+            current_node = current_node.next
+
+        return current_node.value
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
+
     def find_nth_from_end(self, n):
-        pass
+        current_node = self.__sentinel.prev
+
+        while n > 0:
+            if current_node.value is None:
+                return None
+            current_node = current_node.prev
+            n -= 1
+
+        return current_node.value
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def has_cycle(self):
-        pass
+        current_node = self.__sentinel.next
+        node_set = set()
+
+        while current_node.value is not None:
+            if current_node in node_set:
+                return True
+            node_set.add(current_node)
+            current_node = current_node.next
+
+        return False
 
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
     # Assumes the linked list has at least one node
     def create_cycle(self):
-        if self.head == None:
+        if self.__sentinel.next == self.__sentinel:
             return
 
         # navigate to last node
-        current = self.head
-        while current.next != None:
+        current = self.__sentinel
+        while current.next.value != None:
             current = current.next
 
-        current.next = self.head # make the last node link to first node
+        current.next = self.__sentinel.next  # make the last node link to first node
