@@ -60,6 +60,9 @@ class LinkedList:
     # Time Complexity: O(n)
     # Space Complexity: O(1)
     def get_at_index(self, index):
+        if index < 0:
+            return None
+
         current_node = self.__sentinel.next
 
         while index > 0:
@@ -110,7 +113,6 @@ class LinkedList:
                 current_node.next.prev = current_node.prev
                 self.__length -= 1
                 return
-
             current_node = current_node.next
 
     # method to print all the values in the linked list
@@ -128,7 +130,7 @@ class LinkedList:
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: I think O(1) because delete method is always on first node
+    # Time Complexity: I think O(n) because delete method is always called on the first node so no need to traverse the list to remove the node(??)
     # Space Complexity: O(n)
     def reverse(self):
         list_len = self.length()
@@ -148,34 +150,22 @@ class LinkedList:
     # Space Complexity: O(1)
     def find_middle_value(self):
         mid = self.length() // 2
-        current_node = self.__sentinel.next
-
-        for _ in range(mid):
-            current_node = current_node.next
-
-        return current_node.value
+        return self.get_at_index(mid)
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
     # Time Complexity: O(n)
     # Space Complexity: O(1)
-
     def find_nth_from_end(self, n):
-        current_node = self.__sentinel.prev
+        index = self.length() - 1 - n
+        return self.get_at_index(index)
 
-        while n > 0:
-            if current_node.value is None:
-                return None
-            current_node = current_node.prev
-            n -= 1
+        # checks if the linked list has a cycle. A cycle exists if any node in the
+        # linked list links to a node already visited.
+        # returns true if a cycle is found, false otherwise.
+        # Time Complexity: O(n)
+        # Space Complexity: O(n)
 
-        return current_node.value
-
-    # checks if the linked list has a cycle. A cycle exists if any node in the
-    # linked list links to a node already visited.
-    # returns true if a cycle is found, false otherwise.
-    # Time Complexity: O(n)
-    # Space Complexity: O(n)
     def has_cycle(self):
         current_node = self.__sentinel.next
         node_set = set()
