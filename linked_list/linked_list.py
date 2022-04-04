@@ -1,16 +1,13 @@
 
-# Defines a node in the singly linked list
-from unittest.mock import sentinel
-
+# Defines a node in the doubly linked list
 
 class Node:
-
     def __init__(self, value, next_node=None, prev_node=None):
         self.value = value
         self.next = next_node
         self.prev = prev_node
 
-# Defines the singly linked list
+# Defines the doubly linked list
 
 
 class LinkedList:
