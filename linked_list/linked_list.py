@@ -170,8 +170,10 @@ class LinkedList:
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: 
-    # Space Complexity: ?
+    # Time Complexity: O(n^2)
+    # Space Complexity: O(1)
+
+    # This is definitely not the approach  :(
     def reverse(self):
         
         length = self.length()
@@ -230,8 +232,8 @@ class LinkedList:
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def has_cycle(self):
         if not self.head:
             return False
