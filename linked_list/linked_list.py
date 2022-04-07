@@ -222,7 +222,15 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def has_cycle(self):
-        pass
+        slow, fast = self.head, self.head
+
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+
+            if fast == slow:
+                return True
+        return False
 
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
