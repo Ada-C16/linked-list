@@ -58,12 +58,13 @@ class LinkedList:
     def length(self):
         if self.head == None:
             return 0
-        sum = 0
+        su = 0
         pointer = self.head
         while pointer is not None:
-            sum += 1
+            su += 1
             pointer = pointer.next
-        return sum-1
+           
+        return su 
 
 
     # method that returns the value at a given index in the linked list
@@ -101,6 +102,7 @@ class LinkedList:
             self.head = self.tail = Node(value)
         new_node = Node(value)
         self.tail.next = new_node
+        new_node.next = None
         self.tail = new_node
         
 
@@ -126,6 +128,7 @@ class LinkedList:
         while pointer is not None:
             if pointer.value == value:
                 previous = pointer.next
+                pointer = None
             else:
                 pointer = pointer.next
                 previous = pointer 
