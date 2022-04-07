@@ -145,7 +145,35 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def delete(self, value):
-        pass
+        #
+        if self.head is None:
+            return None
+        
+                # Store head node
+        temp = self.head
+
+        # If head node itself holds the key to be deleted
+        if (temp is not None):
+            if (temp.value == value):
+                self.head = temp.next
+                temp = None
+                return
+
+        # Search for the key to be deleted, keep track of the
+        # previous node as we need to change 'prev.next'
+        while(temp is not None):
+            if temp.value == value:
+                break
+            prev = temp
+            temp = temp.next
+
+        # if key was not present in linked list
+        if(temp == None):
+            return
+
+        # Unlink the node from linked list
+        prev.next = temp.next
+        temp = None
 
     # method to print all the values in the linked list
     # Time Complexity: ?
@@ -165,14 +193,33 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def reverse(self):
-        pass
-  
+        if self.head is None:
+            return None
+        
+        prev = None
+        
+        current = self.head
+        while(current is not None):
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
+
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
     # Time Complexity: ?
     # Space Complexity: ?
     def find_middle_value(self):
-        pass
+        slow = self.head
+        fast = self.head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow.value 
+    
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
