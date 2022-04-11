@@ -56,15 +56,25 @@ class LinkedList:
     # Time Complexity: O(n)
     # Space Complexity: O(1)
     def length(self):
-        if self.head == None:
-            return 0
-        su = 0
-        pointer = self.head
-        while pointer is not None:
-            su += 1
-            pointer = pointer.next
+        # if self.head == None:
+        #     return 0
+        # sum = 0
+        # pointer = self.head
+        # while pointer is not None:
+        #     sum += 1
+        #     pointer = pointer.next
            
-        return su 
+        # return sum 
+        
+        temp = self.head 
+        count = 0 # Initialise count
+  
+        # Loop while end of linked list is 
+        # not reached
+        while (temp):
+            count += 1
+            temp = temp.next
+        return count
 
 
     # method that returns the value at a given index in the linked list
@@ -100,10 +110,11 @@ class LinkedList:
     def add_last(self, value):
         if self.tail == None:
             self.head = self.tail = Node(value)
-        new_node = Node(value)
-        self.tail.next = new_node
-        new_node.next = None
-        self.tail = new_node
+        else:
+            new_node = Node(value)
+            self.tail.next = new_node
+            # new_node.next = None
+            self.tail = new_node
         
 
     # method to return the max value in the linked list
@@ -124,17 +135,27 @@ class LinkedList:
     # Space Complexity: ?
     def delete(self, value):
         pointer = self.head
-        previous = None
-        while pointer is not None:
-            if pointer.value == value:
-                previous = pointer.next
-                pointer = None
-            else:
-                pointer = pointer.next
-                previous = pointer 
-           
-     
+    
+        if pointer is None:
+            return 
 
+        if pointer.value == value:
+            self.head = self.head.next
+            return
+        else:
+            current = self.head.next
+            while current is not None:
+                if current.value == value and self.tail == current:
+                    pointer.next = current.next
+                    self.tail = pointer
+                    return 
+                elif current.value == value:
+                    pointer.next = current.next
+                    return 
+                else:
+                    pointer = current
+                    current = current.next 
+           
     # method to print all the values in the linked list
     # Time Complexity: O(n)
     # Space Complexity: O(n)
@@ -153,7 +174,15 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def reverse(self):
-        pass
+       current = following = self.head
+       previous = None
+       while(current != None):
+            following = following.next
+            current.next = previous
+            previous = current          
+            current = following
+       self.head = previous
+  
   
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list

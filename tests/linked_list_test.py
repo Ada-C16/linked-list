@@ -180,7 +180,7 @@ def test_delete_can_remove_last_element_of_list(list):
     assert list.length() == 2
     assert list.get_last() == 4
 
-@pytest.mark.skip()
+
 def test_delete_can_remove_middle_element_of_list(list):
     list.add_first(5)
     list.add_first(4)
