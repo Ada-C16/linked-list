@@ -309,7 +309,7 @@ class LinkedList:
     # method to return the max value in the linked list
     # returns the data value and not the node
     # Time Complexity:O(n)
-    # Space Complexity: O(n)
+    # Space Complexity: O(1)
     def find_max(self):
         # check if list is empty
         if self.head is None:
