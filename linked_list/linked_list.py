@@ -47,7 +47,7 @@ class LinkedList:
 
     # method that returns the length of the singly linked list
     # Time Complexity: O(n)
-    # Space Complexity: ?
+    # Space Complexity: O(1)
     def length(self):
         counter=0
         node=self.head
