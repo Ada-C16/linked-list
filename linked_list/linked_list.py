@@ -25,8 +25,8 @@ class LinkedList:
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def add_first(self, value):
         if self.head is None:
             self.head = self.tail = Node(value)
@@ -37,8 +37,8 @@ class LinkedList:
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def search(self, value):
         current =  self.head
         while current != None:
@@ -48,8 +48,8 @@ class LinkedList:
         return False
 
     # method that returns the length of the singly linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def length(self):
         temp = self.head
         count = 0
@@ -61,8 +61,8 @@ class LinkedList:
     # method that returns the value at a given index in the linked list
     # index count starts at 0
     # returns None if there are fewer nodes in the linked list than the index value
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n^2)
+    # Space Complexity: O(1)
     def get_at_index(self, index):
         if index < 0:
             return None
@@ -78,8 +78,8 @@ class LinkedList:
 
     # method that returns the value of the last node in the linked list
     # returns None if the linked list is empty
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def get_last(self):
         if self.head == None:
             return None
@@ -93,8 +93,8 @@ class LinkedList:
 
 
     # method that inserts a given value as a new last node in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def add_last(self, value):
         new_node = Node(value)
         if self.head is None:
@@ -108,16 +108,25 @@ class LinkedList:
     # returns the data value and not the node
     def find_max(self):
         current = self.head
-        max_value = current.value
-        while current:
-            if current.value > max_value:
-                max_value = current.value
+        if (self.head == None):
+            return None
+        else:
+            # initializing max to the first node value in the linked list
+            max = self.head.value
+            print(max)
+        while (current != None):
+            # if the current node's value is greater than the max
+            # then, replace the value of max_value with the current node's value
+            if max < current.value:
+                max = current.value
             current = current.next
-        return max_value
+        return max
+        
+
 
     # method to delete the first node found with specified value
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n^2)
+    # Space Complexity: O(1)
     def delete(self, value):
         temp = self.head
         if temp is not None:
@@ -137,8 +146,8 @@ class LinkedList:
 
 
     # method to print all the values in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def visit(self):
         helper_list = []
         current = self.head
@@ -154,22 +163,6 @@ class LinkedList:
     # Time Complexity: O(n)
     # Space Complexity: O(1)
     def reverse(self):
-        #start with egdge cases. only one node or no node
-        # if self.head == self.tail:
-        #     return
-        
-        # current = self.head
-
-        # while current is not None:
-        #     prev = current.prev
-        #     next = current.next
-        #     current.next = prev
-        #     current.prev = next 
-        #     current = next
-
-        # temp = self.head
-        # self.head = self.tail
-        # self.tail = temp
         prev = None
         current = self.head
         while current:
