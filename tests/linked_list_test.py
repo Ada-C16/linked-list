@@ -243,7 +243,7 @@ def test_find_nth_from_n(list):
     assert list.find_nth_from_end(3) ==  4
     assert list.find_nth_from_end(4) ==  None
 
-@pytest.mark.skip(reason="Going Further methods")
+# @pytest.mark.skip(reason="Going Further methods")
 def test_has_cycle(list):
     assert list.has_cycle() == False
 
