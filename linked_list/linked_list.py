@@ -144,8 +144,8 @@ class LinkedList:
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse(self):
 
         current = self.head
