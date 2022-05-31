@@ -158,10 +158,15 @@ class LinkedList:
         self.head = prev
     ## Advanced/ Exercises
     # returns the value at the middle element in the singly linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_middle_value(self):
-        pass
+        slow = self.head
+        fast = self.head
+        while fast != None and fast.next != None:
+            fast = fast.next.next
+            slow = slow.next
+        return slow.value
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
