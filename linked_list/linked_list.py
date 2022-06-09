@@ -21,26 +21,38 @@ class LinkedList:
 
         return self.head.value
 
-
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: o(1)
+    # Space Complexity: o(1) constant time, since new data structure is being created but its small
     def add_first(self, value):
-        self.head = Node(value,None)
+        self.head = Node(value,self.head)
       
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
     # Time Complexity: ?
     # Space Complexity: ?
     def search(self, value):
-        pass
+        current = self.head
+        while current is not None:
+            if value == current.value:
+                return True
+            current =  current.next 
+# reset current to equal the next node in the list
+        return False 
 
     # method that returns the length of the singly linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: 0(1) constant time
+    # Space Complexity: 0(1)
     def length(self):
-        pass
+        current = self.head
+        length = 0
+
+        while current != None:
+            length += 1
+            current = current.next 
+
+            return length
 
     # method that returns the value at a given index in the linked list
     # index count starts at 0
@@ -48,15 +60,16 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def get_at_index(self, index):
-        pass
+        if self.length() < index:
+            return None
 
     # method that returns the value of the last node in the linked list
     # returns None if the linked list is empty
     # Time Complexity: ?
     # Space Complexity: ?
     def get_last(self):
-        pass
-
+        
+        
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity: ?
     # Space Complexity: ?
