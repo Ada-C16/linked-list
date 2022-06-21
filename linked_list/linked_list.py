@@ -135,7 +135,30 @@ class LinkedList:
     # Time Complexity: O(n)
     # Space Complexity: O(1)
     def delete(self, value):
-        pass
+        current = self.head
+        
+        if current == None:
+            return 
+        
+        while current:
+            if current.value == value:
+                if current == self.head:
+                    self.head = current.next
+                    self.head.previous = None
+                    return
+                
+                if current == self.tail:
+                    self.tail = current.previous
+                    self.tail.next = None
+                    return
+
+                current.previous.next = current.next
+                current.next.previous = current.previous
+                return
+            else:
+                current = current.next
+
+        
 
     #----------------------
     # method to print all the values in the linked list
