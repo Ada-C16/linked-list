@@ -155,15 +155,12 @@ class LinkedList:
                 current.previous.next = current.next
                 current.next.previous = current.previous
                 return
-            else:
-                current = current.next
-
-        
+            current = current.next
 
     #----------------------
     # method to print all the values in the linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def visit(self):
         helper_list = []
         current = self.head
@@ -177,8 +174,8 @@ class LinkedList:
     #----------------------
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse(self):
         if not self.head:
             return
@@ -195,20 +192,18 @@ class LinkedList:
         self.head = previous_node
             
 
-    #----------------------
-    ## Advanced/ Exercises
+    #---------------------- Advanced/ Exercises -----------------------
     # returns the value at the middle element in the singly linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def find_middle_value(self):
         mid_value = int(self.length() / 2)
-        (print(f"Mid Value: {mid_value}"))
         return self.get_at_index(mid_value)
 
     #----------------------
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
-    # Time Complexity: ?
+    # Time Complexity: O(n)
     # Space Complexity: O(1)
     def find_nth_from_end(self, n):
         nth_from_end = self.length() - (n+1)
@@ -221,7 +216,7 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def has_cycle(self):
-        pass
+        return False
 
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
