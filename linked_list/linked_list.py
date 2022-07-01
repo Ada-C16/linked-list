@@ -68,7 +68,7 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def get_last(self):
-        
+        pass
         
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity: ?
