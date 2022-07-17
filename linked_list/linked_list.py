@@ -1,10 +1,5 @@
 
 # Defines a node in the singly linked list
-from email import header
-from os import curdir
-from socket import AI_PASSIVE
-
-
 class Node:
 
     def __init__(self, value, next_node = None):
