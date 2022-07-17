@@ -118,7 +118,7 @@ class LinkedList:
             return
         
         last = self.head
-        while (last.next):
+        while last.next:
             last = last.next
 
         last.next = new_node
@@ -133,8 +133,8 @@ class LinkedList:
         pointer = self.head
         maximum = self.head.value
 
-        while (pointer is not None):
-            if (maximum < pointer.value):
+        while pointer is not None:
+            if maximum < pointer.value:
                 maximum = pointer.value
             pointer = pointer.next
         
@@ -145,7 +145,25 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def delete(self, value):
-        pass
+        position = self.head
+
+        if position is not None:
+            if position.value == value:
+                self.head = position.next
+                position = None
+                return
+
+        while position is not None:
+            if position.value == value:
+                break
+            prev = position
+            position = position.next
+
+        if position == None:
+            return
+
+        prev.next = position.next
+        position = None
 
     # method to print all the values in the linked list
     # Time Complexity: ?
