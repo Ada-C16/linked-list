@@ -1,6 +1,9 @@
 
 # Defines a node in the singly linked list
 
+from ctypes import pointer
+
+
 class Node:
 
     def __init__(self, value, next_node = None):
@@ -55,10 +58,17 @@ class LinkedList:
         return False  # Value not found
 
     # method that returns the length of the singly linked list
-    # Time Complexity: ?
-    # Space Complexity: ?
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def length(self):
-        pass
+        pointer = self.head
+        counter = 0
+
+        while pointer != None:
+            counter += 1
+            pointer = pointer.next
+
+        return counter
 
     # method that returns the value at a given index in the linked list
     # index count starts at 0
@@ -66,26 +76,39 @@ class LinkedList:
     # Time Complexity: O(n)
     # Space Complexity: 0(1)
     def get_at_index(self, index):
-        if index > 0:
+        if index < 0:
             return None
 
         current_index = 0
-        current = self.head
+        pointer = self.head
 
-        while current != None and current_index < index:
-            current = current.next
+        while pointer != None:
+            if current_index == index:
+                return pointer.value
+            pointer = pointer.next
             current_index += 1
-
-        if current in None:
-            return current
-        return current.value
 
     # method that returns the value of the last node in the linked list
     # returns None if the linked list is empty
     # Time Complexity: ?
     # Space Complexity: ?
     def get_last(self):
-        pass
+        # pointer = self.head
+        # next_node = pointer.next
+
+        # while next_node != None:
+        #     pointer = next_node
+        #     next_node = pointer.next
+
+        if self.head is None:
+            return None
+        
+        pointer = self.head
+        
+        while pointer.next is not None:
+            pointer = pointer.next
+            
+        return pointer.value
 
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity: ?
