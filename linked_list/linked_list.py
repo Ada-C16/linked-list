@@ -60,7 +60,10 @@ class LinkedList:
     # Space Complexity: O(1)
     def search(self, value):
         if self.head == None:
-            return None
+            return False
+
+        if self.head.value == value:
+            return True
 
         current = self.head
         while current:
@@ -91,15 +94,17 @@ class LinkedList:
     # Space Complexity: O(1)
     def get_at_index(self, index):
 
-        if self.head == None:
-            return None 
+        # if self.head == None:
+        #     return None 
 
-        if self.length() < index:
+        if self.length() <= index:
             return None
 
         current_value = 0 
         current_node = self.head
-        while current_value:
+        while current_node:
+            if current_value == index:
+                return current_node.value
             current_node = current_node.next
             current_value += 1
 
