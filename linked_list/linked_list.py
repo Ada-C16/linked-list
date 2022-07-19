@@ -19,9 +19,9 @@ class LinkedList:
     # Time Complexity: ?
     # Space Complexity: ?
     def get_first(self):
-        if not self.head:
-            return None
-        return self.head.value
+        if self.head:
+            return self.head.value
+        return None
         
 
 
@@ -30,14 +30,7 @@ class LinkedList:
     # Time Complexity: o(1)
     # Space Complexity: o(1)
     def add_first(self, value):
-        new_node = Node(value)
-        new_node.next = self.head
-
-        if self.head:
-            self.head.previous = new_node
-        self.head = new_node
-        if not self.tail:
-            self.tail = new_node
+        self.head = Node(value, self.head)
         
       
 
@@ -101,13 +94,24 @@ class LinkedList:
     def get_last(self):
         if not self.head:
             return None
-        return self.tail.value
+        current = self.head 
+        while current.next:
+            current = current.next
+        return current.value 
+        # return self.tail.value
 
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity: o(n)
     # Space Complexity: o(1)
     def add_last(self, value):
-        pass
+        if not self.head:
+            self.add_first(value)
+        else: 
+            new_node = Node(value)
+            current = self.head
+            while current.next: 
+                current = current.next
+            current.next = new_node 
 
     # method to return the max value in the linked list
     # returns the data value and not the node
@@ -128,27 +132,33 @@ class LinkedList:
     # Space Complexity: o(1)
     def delete(self, value):
         if not self.head: 
-            return None 
-        current = self.head 
-        if current.value == value:
+            return 
+        # current = self.head 
+        elif current.value == value:
             self.head = current.next
-            if self.head:
-                self.head.previous = None
-            if not self.head:
-                self.tail = None    
-            return None 
+            return True 
+        else:
+            current = self.head 
+            while current.next and current.next.value != value: 
+                current = current.next 
+            current.next = current.next.next
+            # if self.head:
+            #     self.head.previous = None
+            # if not self.head:
+            #     self.tail = None    
+            # return None 
 
         #   previous = current
 
-        while current.next:
-            if current.next.value == value:
-                current.next = current.next.next
-                if current.next:
-                    current.next.previous = current
-                if not current.next:
-                    self.tail = current
+        # while current.next:
+        #     if current.next.value == value:
+        #         current.next = current.next.next
+        #         if current.next:
+        #             current.next.previous = current
+        #         if not current.next:
+        #             self.tail = current
 
-                return None
+        #         return None
          
 
 
