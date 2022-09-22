@@ -38,7 +38,7 @@ class LinkedList:
         current = self.head
 
         while current:
-            if current.val == value:
+            if current.value== value:
                 return True
             current = current.next
     
@@ -48,12 +48,13 @@ class LinkedList:
     # Time Complexity: O(n)
     # Space Complexity: O(1)
     def length(self):
-        
         count = 0
-        while elem:
-            elem = elem.next
-            count += 1
-        return count 
+        current = self.head
+
+        while current != None:
+            current = current.next
+            count +=1
+        return count
 
     # method that returns the value at a given index in the linked list
     # index count starts at 0
@@ -61,31 +62,32 @@ class LinkedList:
     # Time Complexity: O(n)
     # Space Complexity: O(1)
     def get_at_index(self, index):
-        current_x = 0
-        current_elem = self.head
-        
-        while current_x < index:
-            current_x+=1
-            current_elem = current_elem.next
-        if current_x == index and current_elem:
-            return current_elem.val
+        if index < 0:
+            return None
+        else:
+            current = self.head
+            count = 0
+            while current:
+                if count == index:
+                    return current.value
+                current = current.next
+                count += 1
+            return 
         
  
 
     # method that returns the value of the last node in the linked list
     # returns None if the linked list is empty
-    # Time Complexity: ?
-    # Space Complexity: ?
-    def get_last(self,index):
-        current_x = 0
-        current_elem = self.head
-        
-        while current_x < index:
-            current_x+=1
-            current_elem = current_elem.next
-        if current_x == index and current_elem:
-            return current_elem.val
-        
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
+    def get_last(self):
+        current = self.head
+        if not current:
+            return None
+        while current.next:
+            current = current.next
+        else:
+            return current.value
 
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity: O(n)
@@ -105,15 +107,18 @@ class LinkedList:
     # method to return the max value in the linked list
     # returns the data value and not the node
     def find_max(self):
-        if not self.head:
+        max = 0
+        if self.head == None:
             return None
-        max = self.head.value
-        current = self.head
-        while current.next:
+
+        current  = self.head
+        while current:
+            if current.value > max:
+                max= current.value
             current = current.next
-            if current.value>max.value:
-                max = current
-        return max.value
+
+        return max
+
 
 
     # method to delete the first node found with specified value
